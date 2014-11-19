@@ -1,4 +1,5 @@
 require 'forwardable'
+require 'cequel/delegates'
 
 module Cequel
   module Metal
@@ -20,7 +21,7 @@ module Cequel
     #
     class DataSet
       include Enumerable
-      extend ::Cequel::Delegates
+      extend Delegates
 
       # @return [Keyspace] keyspace that this data set's table resides in
       attr_reader :keyspace
