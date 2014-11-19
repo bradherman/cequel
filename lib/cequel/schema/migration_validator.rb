@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Schema
     #
@@ -8,7 +7,7 @@ module Cequel
     # @api private
     #
     class MigrationValidator
-      extend Forwardable
+      extend Cequel::Delegates
       #
       # Check for various impossible schema changes and raise if any are found
       #

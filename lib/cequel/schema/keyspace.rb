@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Schema
     #
@@ -9,7 +8,7 @@ module Cequel
     #   {Cequel::Metal::Keyspace} in a future version of Cequel
     #
     class Keyspace
-      extend Forwardable
+      extend Cequel::Delegates
 
       #
       # @param keyspace [Keyspace] the keyspace whose schema this object
@@ -92,7 +91,7 @@ module Cequel
       end
 
       # @return [Boolean] true if the keyspace exists
-      def_delegator :keyspace, :exists?
+      delegates :keyspace, :exists?
 
       #
       # @param name [Symbol] name of the table to read

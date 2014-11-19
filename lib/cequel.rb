@@ -1,5 +1,4 @@
-# -*- encoding : utf-8 -*-
-require 'delegate'
+# require 'delegate'
 
 require 'active_support'
 require 'active_support/deprecation'

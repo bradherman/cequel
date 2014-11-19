@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Metal
     #
@@ -7,7 +6,7 @@ module Cequel
     # @api private
     #
     class RequestLogger
-      extend Forwardable
+      extend Cequel::Delegates
       # @return [::Logger] An instance of Logger that responds to methods for
       #   standard severity levels
       attr_accessor :logger
@@ -54,7 +53,7 @@ module Cequel
         format('%s (%s) %s', label, timing, sanitize(statement, bind_vars))
       end
 
-      def_delegator 'Cequel::Metal::Keyspace', :sanitize
+      delegates 'Cequel::Metal::Keyspace', :sanitize
       private :sanitize
     end
   end

@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 require 'set'
 
 module Cequel
@@ -9,7 +8,7 @@ module Cequel
     # instance.
     #
     class Keyspace
-      extend Forwardable
+      extend Cequel::Delegates
       include Logging
       include MonitorMixin
 
@@ -40,7 +39,7 @@ module Cequel
       #   @param (see #execute)
       #   @return [void]
       #
-      def_delegator :write_target, :execute, :write
+      delegates :write_target, :execute, :write
 
       # @!method write_with_consistency(statement, bind_vars, consistency)
       #
@@ -51,14 +50,14 @@ module Cequel
       #   @param (see #execute_with_consistency)
       #   @return [void]
       #
-      def_delegator :write_target, :execute_with_consistency,
+      delegates :write_target, :execute_with_consistency,
                     :write_with_consistency
 
       #
       # @!method batch
       #   (see Cequel::Metal::BatchManager#batch)
       #
-      def_delegator :batch_manager, :batch
+      delegates :batch_manager, :batch
 
       #
       # Combine a statement with bind vars into a fully-fledged CQL query. This
@@ -81,7 +80,7 @@ module Cequel
       # @!method sanitize
       #   (see Cequel::Metal::Keyspace.sanitize)
       #
-      def_delegator 'self.class', :sanitize
+      delegates 'self.class', :sanitize
 
       #
       # @api private
@@ -243,10 +242,10 @@ module Cequel
 
       attr_reader :lock
 
-      def_delegator :batch_manager, :current_batch
+      delegates :batch_manager, :current_batch
       private :current_batch
 
-      def_delegator :lock, :synchronize
+      delegates :lock, :synchronize
       private :lock
 
       def raw_client

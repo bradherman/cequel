@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Metal
     #
@@ -11,7 +10,7 @@ module Cequel
     # @api private
     #
     class Writer
-      extend Forwardable
+      extend Cequel::Delegates
 
       #
       # @param data_set [DataSet] data set to write to
@@ -48,8 +47,8 @@ module Cequel
       private
 
       attr_reader :data_set, :options, :statements, :bind_vars
-      def_delegator :data_set, :table_name
-      def_delegator :statements, :empty?
+      delegates :data_set, :table_name
+      delegates :statements, :empty?
 
       def prepare_upsert_value(value)
         case value

@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Schema
     #
@@ -36,43 +35,43 @@ module Cequel
       # @!method partition_key(name, type)
       #   (see Cequel::Schema::Table#add_partition_key)
       #
-      def_delegator :@table, :add_partition_key, :partition_key
+      delegates :@table, :add_partition_key, :partition_key
 
       #
       # @!method key(name, type, clustering_order = nil)
       #   (see Cequel::Schema::Table#add_key)
       #
-      def_delegator :@table, :add_key, :key
+      delegates :@table, :add_key, :key
 
       #
       # @!method column(name, type, options = {})
       #   (see Cequel::Schema::Table#add_data_column)
       #
-      def_delegator :@table, :add_data_column, :column
+      delegates :@table, :add_data_column, :column
 
       #
       # @!method list(name, type)
       #   (see Cequel::Schema::Table#add_list)
       #
-      def_delegator :@table, :add_list, :list
+      delegates :@table, :add_list, :list
 
       #
       # @!method set(name, type)
       #   (see Cequel::Schema::Table#add_set)
       #
-      def_delegator :@table, :add_set, :set
+      delegates :@table, :add_set, :set
 
       #
       # @!method map(name, key_type, value_type)
       #   (see Cequel::Schema::Table#add_map)
       #
-      def_delegator :@table, :add_map, :map
+      delegates :@table, :add_map, :map
 
       #
       # @!method with(name, value)
       #   (see Cequel::Schema::Table#add_property)
       #
-      def_delegator :@table, :add_property, :with
+      delegates :@table, :add_property, :with
 
       #
       # Direct that this table use "compact storage". This is primarily useful

@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Record
     #
@@ -152,12 +151,12 @@ module Cequel
         end
 
         def def_parent_association_reader
-          def_delegator 'self', :read_parent_association,
+          delegates 'self', :read_parent_association,
                         parent_association.name
         end
 
         def def_parent_association_writer
-          def_delegator 'self', :write_parent_association,
+          delegates 'self', :write_parent_association,
                         "#{parent_association.name}="
         end
 

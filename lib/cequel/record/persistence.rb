@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Record
     #
@@ -11,14 +10,14 @@ module Cequel
     #
     module Persistence
       extend ActiveSupport::Concern
-      extend Forwardable
+      extend Cequel::Delegates
       include Instrumentation
 
       #
       # Class-level functionality for loading and saving records
       #
       module ClassMethods
-        extend Forwardable
+        extend Cequel::Delegates
 
         #
         # Initialize a new record instance, assign attributes, and immediately
@@ -64,7 +63,7 @@ module Cequel
         end
 
         # @private
-        def_delegator 'Cequel::Record', :connection
+        delegates 'Cequel::Record', :connection
       end
 
       #

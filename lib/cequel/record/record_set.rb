@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Record
     #
@@ -100,7 +99,7 @@ module Cequel
     # @since 1.0.0
     #
     class RecordSet < SimpleDelegator
-      extend Forwardable
+      extend Cequel::Delegates
       extend Cequel::Util::HashAccessors
       include Enumerable
       include BulkWrites
@@ -880,7 +879,7 @@ module Cequel
       private
 
       def_delegators :target_class, :connection
-      def_delegator :range_key_column, :cast, :cast_range_key
+      delegates :range_key_column, :cast, :cast_range_key
       private :connection, :cast_range_key
 
       def method_missing(method, *args, &block)

@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Record
     #
@@ -8,7 +7,7 @@ module Cequel
     # @api private
     #
     class DataSetBuilder
-      extend Forwardable
+      extend Cequel::Delegates
 
       #
       # Build a data set for the given record set

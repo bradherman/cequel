@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Record
     #
@@ -12,7 +11,7 @@ module Cequel
     #
     class AssociationCollection < DelegateClass(RecordSet)
       include Enumerable
-      extend Forwardable
+      extend Cequel::Delegates
 
       #
       # @yield [Record]
@@ -59,7 +58,7 @@ module Cequel
       #   @see #size
       #   @see #length
       #
-      def_delegator :record_set, :count
+      delegates :record_set, :count
 
       #
       # @!method length
@@ -71,7 +70,7 @@ module Cequel
       #   @see #size
       #   @see #count
       #
-      def_delegator :entries, :length
+      delegates :entries, :length
 
       #
       # Get the size of the child collection. If the records are loaded in

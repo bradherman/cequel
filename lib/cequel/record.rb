@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 require 'active_model'
 require 'weakref'
 
@@ -78,7 +77,7 @@ module Cequel
   #
   module Record
     extend ActiveSupport::Concern
-    extend Forwardable
+    extend Cequel::Delegates
 
     included do
       include Properties

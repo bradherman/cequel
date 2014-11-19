@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 require 'forwardable'
 
 module Cequel
@@ -21,7 +20,7 @@ module Cequel
     #
     class DataSet
       include Enumerable
-      extend Forwardable
+      extend Cequel::Delegates
 
       # @return [Keyspace] keyspace that this data set's table resides in
       attr_reader :keyspace
@@ -49,7 +48,7 @@ module Cequel
       # @since 1.1.0
       attr_reader :query_consistency
 
-      def_delegator :keyspace, :write_with_consistency
+      delegates :keyspace, :write_with_consistency
 
       #
       # @param table_name [Symbol] column family for this data set

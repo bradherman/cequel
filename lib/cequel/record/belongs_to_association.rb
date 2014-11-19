@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Record
     #
@@ -9,7 +8,7 @@ module Cequel
     # @since 1.0.0
     #
     class BelongsToAssociation
-      extend Forwardable
+      extend Cequel::Delegates
 
       # @return [Class] child class that declared `belongs_to`
       attr_reader :owner_class
@@ -20,7 +19,7 @@ module Cequel
 
       # @!attribute [r] association_key_columns
       #   @return [Array<Schema::Column>] key columns on the parent class
-      def_delegator :association_class, :key_columns, :association_key_columns
+      delegates :association_class, :key_columns, :association_key_columns
 
       #
       # @param owner_class [Class] child class that declared `belongs_to`

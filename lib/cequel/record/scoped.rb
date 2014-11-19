@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Record
     #
@@ -14,7 +13,7 @@ module Cequel
       # Scoping-related methods for {Record} classes
       #
       module ClassMethods
-        extend Forwardable
+        extend Cequel::Delegates
 
         def_delegators :current_scope,
                        *(RecordSet.public_instance_methods(false) +

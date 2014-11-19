@@ -1,11 +1,10 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Metal
     #
     # Methods to handle logging for {Keyspace} instances
     #
     module Logging
-      extend Forwardable
+      extend Cequel::Delegates
       def_delegators :request_logger, :logger, :logger=, :slowlog_threshold,
                      :slowlog_threshold=
 
@@ -24,7 +23,7 @@ module Cequel
         @request_logger ||= RequestLogger.new
       end
 
-      def_delegator :request_logger, :log
+      delegates :request_logger, :log
       protected :log
     end
   end

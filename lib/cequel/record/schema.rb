@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Record
     #
@@ -16,7 +15,7 @@ module Cequel
     #
     module Schema
       extend ActiveSupport::Concern
-      extend Forwardable
+      extend Cequel::Delegates
 
       included do
         class_attribute :table_name, instance_writer: false
@@ -33,7 +32,7 @@ module Cequel
         #   @return [Symbol] name of the CQL table that backs this record class
         #
 
-        extend Forwardable
+        extend Cequel::Delegates
 
         #
         # @!attribute [r] columns
@@ -68,7 +67,7 @@ module Cequel
         # @!method reflect_on_column(name)
         #   (see Cequel::Schema::Table#column)
         #
-        def_delegator :table_schema, :column, :reflect_on_column
+        delegates :table_schema, :column, :reflect_on_column
 
         #
         # Read the current schema assigned to this record's table from
@@ -147,7 +146,7 @@ module Cequel
 
       protected
 
-      def_delegator 'self.class', :table_schema
+      delegates 'self.class', :table_schema
       protected :table_schema
     end
   end

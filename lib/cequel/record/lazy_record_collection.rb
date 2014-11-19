@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 module Cequel
   module Record
     #
@@ -12,7 +11,7 @@ module Cequel
     # @since 1.0.0
     #
     class LazyRecordCollection < DelegateClass(Array)
-      extend Forwardable
+      extend Cequel::Delegates
       include BulkWrites
       #
       # @!method table

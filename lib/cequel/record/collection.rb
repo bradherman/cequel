@@ -1,4 +1,3 @@
-# -*- encoding : utf-8 -*-
 require 'delegate'
 
 module Cequel
@@ -53,7 +52,7 @@ module Cequel
     #
     module Collection
       extend ActiveSupport::Concern
-      extend Forwardable
+      extend Cequel::Delegates
 
       #
       # @!method loaded?
@@ -67,7 +66,7 @@ module Cequel
       # @!method column_name
       #   @return [Symbol] the name of the collection column
       #
-      def_delegator :@column, :name, :column_name
+      delegates :@column, :name, :column_name
 
       def_delegators :__getobj__, :clone, :dup
 
@@ -130,8 +129,8 @@ module Cequel
       private
 
       attr_reader :model, :column
-      def_delegator :column, :cast, :cast_collection
-      def_delegator 'column.type', :cast, :cast_element
+      delegates :column, :cast, :cast_collection
+      delegates 'column.type', :cast, :cast_element
       private :cast_collection, :cast_element
 
       def to_modify(&block)
@@ -425,7 +424,7 @@ module Cequel
     #
     class Map < DelegateClass(::Hash)
       include Collection
-      extend Forwardable
+      extend Cequel::Delegates
 
       # These methods involve mutation that cannot be expressed as a CQL
       # operation, so are not implemented.
@@ -517,7 +516,7 @@ module Cequel
 
       private
 
-      def_delegator 'column.key_type', :cast, :cast_key
+      delegates 'column.key_type', :cast, :cast_key
       private :cast_key
     end
   end
