@@ -15,7 +15,7 @@ module Cequel
       module ClassMethods
         extend Cequel::Delegates
 
-        def_delegators :current_scope,
+        delegates :current_scope,
                        *(RecordSet.public_instance_methods(false) +
                          BulkWrites.public_instance_methods -
                          Object.instance_methods -

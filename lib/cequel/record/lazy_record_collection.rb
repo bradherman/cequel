@@ -18,7 +18,7 @@ module Cequel
       #   (see RecordSet#table)
       # @!method connection
       #   (see RecordSet#connection)
-      def_delegators :record_set, :table, :connection
+      delegates :record_set, :table, :connection
 
       #
       # @param record_set [RecordSet] record set representing the records in
@@ -76,7 +76,7 @@ module Cequel
 
       attr_reader :record_set
 
-      def_delegators :record_set, :key_columns, :scoped_key_values
+      delegates :record_set, :key_columns, :scoped_key_values
       private :key_columns, :scoped_key_values
 
       def key_attributes_for_each_row

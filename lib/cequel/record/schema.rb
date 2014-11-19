@@ -59,7 +59,7 @@ module Cequel
         # @!method compact_storage?
         #   (see Cequel::Schema::Table#compact_storage?)
         #
-        def_delegators :table_schema, :columns, :column_names, :key_columns,
+        delegates :table_schema, :columns, :column_names, :key_columns,
                        :key_column_names, :partition_key_columns,
                        :partition_key_column_names, :clustering_columns,
                        :compact_storage?

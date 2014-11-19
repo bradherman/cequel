@@ -5,6 +5,7 @@ module Cequel
     #
     class UpdateTableDSL < BasicObject
       extend ::Forwardable
+      extend Delegates
       #
       # Describe a series of schema modifications and build a {TableUpdater}
       # to encapsulate them

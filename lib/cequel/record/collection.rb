@@ -59,7 +59,7 @@ module Cequel
       #   @return [Boolean] `true` if the collection's contents are loaded into
       #     memory
       #
-      def_delegators :@model, :loaded?, :updater, :deleter
+      delegates :@model, :loaded?, :updater, :deleter
       private :updater, :deleter
 
       #
@@ -68,7 +68,7 @@ module Cequel
       #
       delegates :@column, :name, :column_name
 
-      def_delegators :__getobj__, :clone, :dup
+      delegates :__getobj__, :clone, :dup
 
       included do
         define_method(

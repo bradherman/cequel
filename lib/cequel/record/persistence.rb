@@ -302,7 +302,7 @@ module Cequel
 
       private
 
-      def_delegators 'self.class', :connection, :table
+      delegates 'self.class', :connection, :table
       private :connection, :table
 
       def read_attribute(attribute)

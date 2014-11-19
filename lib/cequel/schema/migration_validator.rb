@@ -7,7 +7,7 @@ module Cequel
     # @api private
     #
     class MigrationValidator
-      extend Cequel::Delegates
+      extend Delegates
       #
       # Check for various impossible schema changes and raise if any are found
       #
@@ -40,7 +40,7 @@ module Cequel
       private
 
       attr_reader :synchronizer
-      def_delegators :synchronizer, :each_key_pair,
+      delegates :synchronizer, :each_key_pair,
                      :each_clustering_column_pair, :each_data_column_pair,
                      :existing, :updated
 

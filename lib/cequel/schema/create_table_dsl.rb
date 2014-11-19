@@ -7,6 +7,7 @@ module Cequel
     #
     class CreateTableDSL < BasicObject
       extend ::Forwardable
+      extend Delegates
       #
       # Evaluate `block` in the context of this DSL, and apply directives to
       # `table`

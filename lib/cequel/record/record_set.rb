@@ -631,7 +631,7 @@ module Cequel
               "#{unscoped_key_names.join(', ')}"
       end
 
-      def_delegators :entries, :inspect
+      delegates :entries, :inspect
 
       # @private
       def ==(other)
@@ -878,7 +878,7 @@ module Cequel
 
       private
 
-      def_delegators :target_class, :connection
+      delegates :target_class, :connection
       delegates :range_key_column, :cast, :cast_range_key
       private :connection, :cast_range_key
 

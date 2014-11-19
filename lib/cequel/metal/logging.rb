@@ -1,11 +1,15 @@
+require 'forwardable'
+require 'cequel/delegates'
+
 module Cequel
   module Metal
     #
     # Methods to handle logging for {Keyspace} instances
     #
     module Logging
-      extend Cequel::Delegates
-      def_delegators :request_logger, :logger, :logger=, :slowlog_threshold,
+      extend Forwardable
+      extend Delegates
+      delegates :request_logger, :logger, :logger=, :slowlog_threshold,
                      :slowlog_threshold=
 
       #
