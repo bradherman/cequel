@@ -20,7 +20,7 @@ module Cequel
     #
     class DataSet
       include Enumerable
-      extend Cequel::Delegates
+      extend ::Cequel::Delegates
 
       # @return [Keyspace] keyspace that this data set's table resides in
       attr_reader :keyspace
